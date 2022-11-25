@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="form.css">
+		<script src="form.js"></script>
+	</head>
+	<body>
+		<form>
+			<h2 id="title">Please Enter you details!!!</h2>
+
+			<label class="info-tag">Name</label><br/>
+			<input type="text" maxlength="30" class="box-color" id="name"><br/>
+			
+			<label class="info-tag">Email</label><br/>
+			<input type="email" class="box-color" id="email"><br/>
+			
+			<label class="info-tag">Address</label><br/>
+			<textarea type="email" class="box-color" id="address" style="resize: none;"></textarea><br/>
+			
+			<label class="info-tag">Contact Number</label><br/>
+			<input type="text" class="box-color" id="contactNo"></input><br/>
+			
+			<label class="info-tag">Country</label><br/>
+			<select id="country" onchange="selectCountry()">
+				<option value="country">Select Country</option>
+			</select><br/>
+			
+			<label class="info-tag">State</label><br/>
+			<select id="state">
+				<option value="state">Select State</option>
+			</select><br/>
+			
+			<button onclick="Validate()" type="button">Submit</button>
+		</form>
+		
+	</body>
+</html>

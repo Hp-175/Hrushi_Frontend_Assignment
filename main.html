@@ -1,0 +1,56 @@
+<html>
+	<head>
+
+		<script src="form.js"></script>
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Archivo+Narrow|Roboto+Slab|DM+Serif+Display|El+Messiri|Libre+Franklin|Didact+Gothic|Lora|Oswald');@import url('https://fonts.googleapis.com/css?family=Archivo+Narrow|Roboto+Slab|DM+Serif+Display|El+Messiri|Libre+Franklin|Didact+Gothic|Lora|Oswald');
+		  table{
+		  	font-family: "Roboto Slab";
+		  }
+		  td{
+		  	padding: 5px;
+		  }
+		  span{
+		  	color: #a81515;
+		  }
+		</style>
+	</head>
+	<body style="text-align: center;">
+		<iframe id="mainframe" src="form.html" width="400" height="501" style="border-color: #915182;" >
+</iframe><br/><br/>
+		<div style="margin-left: 36%;"><table id='errors'></table></div>
+		
+		<script>
+
+    	var frame=document.getElementById('mainframe');
+    	frame=frame?frame.contentWindow:null;
+    	window.addEventListener("message",(e)=>{
+    		var Result=e.data;
+    		var err=parent.document.getElementById('errors');
+			var ans="";
+    		if(Object.keys(Result).length==0)
+    		{
+    			
+    			ans+="<tr><td><b>Result</b></td><td><b>Message</b></td></b></tr>";
+    			ans+="<tr><td><span style=\"color:#037503\">Success</span></td><td>All fields are valid</td></tr>";
+    		}
+    		else
+    		{
+    			ans+="<tr><td><b>Status</b></td><td><b>Field</b></td><td><b>Message</b></td></tr>";
+    			var keys=Object.keys(Result);
+    			for(let key in keys)
+    			{
+    				ans+="<tr><td><span>Error</span></td><td>"+keys[key]+"</td><td>"+Result[keys[key]]['error']+"<td/></tr>";
+    			}
+    		}
+    		
+			if(Object.keys(Result).length==0)
+				Result["Success"]='All fields are valid';
+
+			//err.innerHTML='Result: '+(JSON.stringify(Result));
+			err.innerHTML=ans;
+    	});
+	    </script>
+
+	</body>
+</html>
